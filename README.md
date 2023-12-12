@@ -17,6 +17,17 @@ and to use glyphs for making isotype pictograms.
 
 It uses ggplot2 and returns a ggplot2 object.
 
+## Edited to Add
+* GitHub link to original R package: https://github.com/hrbrmstr/waffle/tree/master
+* URL to deployed website: https://jhu-statprogramming-fall-2023.github.io/biostat777-project3-part1-tamisha-s/
+
+What I customized in the `pkgdown` website:
+1. thing 1
+2. thing 2
+3. thing 3
+4. thing 4
+5. thing 5
+
 ## What’s Inside the Tin
 
 The following functions are implemented:
