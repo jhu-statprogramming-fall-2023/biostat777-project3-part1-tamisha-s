@@ -20,21 +20,126 @@ This vignette demonstrates some functions in this package using a dataset from [
 
 ## Loading and installing packages
 
+### Installing packages
+
 ```{r}
 install.packages("tidytuesdayR", repos = "https://cloud.r-project.org/")
+```
 
+### Loading packages
+
+```{r}
 library(waffle)
 library(tidytuesdayR)
 library(tidyverse)
+library(here)
 ```
 
 ## Getting the data
 
-```{r}
-# Get the Data
+```{r create data dir}
+# tests if a directory named "data" exists locally
+if (!dir.exists(here("data"))) {
+    dir.create(here("data"))
+}
 
-tuesdata <- tidytuesdayR::tt_load('2023-01-10')
+# Read in the data manually
 
-feederwatch <- tuesdata$feederwatch
+if (!file.exists(here("data", "feederwatch.RDS"))) {
+  feederwatch_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-10/PFW_2021_public.csv')
+  
+  saveRDS(feederwatch_data, file=here("data", "feederwatch.RDS"))
+}
+
+if (!file.exists(here("data", "site_data.RDS"))) {
+  sitedata <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-10/PFW_count_site_data_public_2021.csv')
+  
+  saveRDS(sitedata, file=here("data", "site_data.RDS"))
+}
 
 ```
+
+```{r read in data from RDS files}
+feederwatch <- readRDS(here("data", "feederwatch.RDS"))
+site_data <- readRDS(here("data", "site_data.RDS"))
+```
+
+## Background
+
+The following background about the dataset is obtained directly from the Tidy Tuesday GitHub page[^1]:
+
+[^1]: <https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-01-10/readme.md>
+
+The data this week comes from the [Project FeederWatch](https://feederwatch.org/explore/raw-dataset-requests/).
+
+> FeederWatch is a November-April survey of birds that visit backyards, nature centers, community areas, and other locales in North America. Citizen scientists could birds in areas with plantings, habitat, water, or food that attracts birds. The schedule is completely flexible. People count birds as long as they like on days of their choosing, then enter their counts online. This allows anyone to track what is happening to birds around your home and to contribute to a continental data-set of bird distribution and abundance.
+
+> FeederWatch data show which bird species visit feeders at thousands of locations across the continent every winter. The data also indicate how many individuals of each species are seen. This information can be used to measure changes in the winter ranges and abundances of bird species over time.
+
+A subset of the 2021 data is included for this TidyTuesday, but data available through 1988 is available for download on [FeederWatch Raw Dataset Downloads page](https://feederwatch.org/explore/raw-dataset-requests/)
+
+> Project FeederWatch is operated by the Cornell Lab of Ornithology and Birds Canada. Since 2016, Project FeederWatch has been sponsored by Wild Bird Unlimited.
+
+Here's a link to the data dictionary: [Data Dictionary](https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-01-10/readme.md)
+
+### Aims for this example data analysis
+
+With this data analysis, I want to explore the distribution trends for the Blue Jay (Go Hop!) and answer the question, ...?
+
+Species code for the Blue Jay: `blujay`
+
+## Data wrangling
+
+```{r dataset for bluejays from feederwatch and site data}
+blue_jays <- as_tibble(feederwatch) %>%
+  group_by("species_code") %>%
+  mutate_at("species_code", as.factor) %>%
+  filter(species_code == 'blujay') %>%
+  mutate_at("Year", as.factor)
+```
+
+## Data visualization
+
+### Looking at number of blue jays per year
+
+```{r}
+blue_jays_plot <- blue_jays %>%
+  group_by(Year) %>%
+  summarise(total = n()) %>%
+  ggplot(aes(Year, total)) +
+  geom_bar(stat = "identity") +
+  labs(
+    title = "Visualizing number of blue jays spotted per year",
+    subtitle = "Focusing on 2020 and 2021",
+    x = "Year",
+    y = "Number of blue jays spotted"
+  )
+  
+blue_jays_plot
+```
+
+## Functions used
+
+-   `dplyr and tidyr`
+
+    -   `group_by()`
+
+    -   `mutate_at()`
+
+    -   `filter()`
+
+    -   `summarise()`
+
+-   `stringr`
+
+-   `lubridate`
+
+-   `forcats`
+
+-   `purrr`
+
+-   `ggplot2`
+
+    -   `geom_bar()`
+
+-   `waffle`
