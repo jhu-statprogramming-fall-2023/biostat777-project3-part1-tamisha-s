@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # 🧇 waffle
 
@@ -499,3 +500,5 @@ cloc::cloc_pkg_md()
 Please note that this project is released with a [Contributor Code of
 Conduct](CONDUCT.md). By participating in this project you agree to
 abide by its terms.
+
+>>>>>>> eee43d506fa40f2294e7caa1bb3d4ff98e55f88d
