@@ -1,14 +1,21 @@
 url: ~
 template:
   bootstrap: 5
-  bootswatch: litera
   theme: monokai
   bslib:
-    base_font: {google: "Rubik"}
-    heading_font: {google: "Kalnia"}
-    code_font: {google: "Roboto Mono"}
+    base_font: {google: "Dosis"}
+    heading_font: {google: "Sanchez"}
+    code_font: {google: "Inconsolata"}
   navbar:
+    bg: primary
     structure:
       left:  [search]
       right: [reference, articles]
+  home:
+    sidebar:
+      structure: [authors, custom, toc, dev]
+      components:
+        custom:
+          title: Example Data Analysis
+          text: Website update & example analysis done by Tamisha Segbefia
 

@@ -22,11 +22,11 @@ It uses ggplot2 and returns a ggplot2 object.
 * URL to deployed website: https://jhu-statprogramming-fall-2023.github.io/biostat777-project3-part1-tamisha-s/
 
 What I customized in the `pkgdown` website:
-1. Changed the theme to the bootswatch theme `Litera`
-2. Changed the base, heading, and code fonts to "Rubik", "Kalina", and "Roboto Mono" respectively
+1. Changed the background of the navbar to `dark`
+2. Changed the base, heading, and code fonts to "Dosis", "Sanchez", and "Roboto Mono" respectively
 3. Edited the syntax highlighting to the theme `monokai`
-4. thing 4
-5. thing 5
+4. Updated the structure of the navbar by moving the search to the left, and reference/articles to the right
+5. Updated the sidebar to include my name
 
 ## What’s Inside the Tin
 

@@ -1,0 +1,40 @@
+---
+title: "Example Analysis"
+output: rmarkdown::html_vignette
+description: >
+  Explore some of the functions in the waffle package.
+vignette: >
+  %\VignetteIndexEntry{Example Analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This vignette demonstrates some functions in this package using a dataset from [Tidy Tuesday](https://www.tidytuesday.com/), specifically the [Project FeederWatch](https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-01-10/readme.md) dataset.
+
+## Loading and installing packages
+
+```{r}
+install.packages("tidytuesdayR", repos = "https://cloud.r-project.org/")
+
+library(waffle)
+library(tidytuesdayR)
+library(tidyverse)
+```
+
+## Getting the data
+
+```{r}
+# Get the Data
+
+tuesdata <- tidytuesdayR::tt_load('2023-01-10')
+
+feederwatch <- tuesdata$feederwatch
+
+```
