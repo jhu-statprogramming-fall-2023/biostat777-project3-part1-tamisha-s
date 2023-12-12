@@ -119,7 +119,7 @@ xdf %>%
   theme_enhance_waffle()
 ```
 
-<img src="README_files/figure-commonmark/new-bits-1.png" width="768" />
+<img src="man/figures/new-bits-1.png" width="768" />
 
 ``` r
 
@@ -153,7 +153,7 @@ xdf %>%
   ) 
 ```
 
-<img src="README_files/figure-commonmark/new-bits-2.png" width="768" />
+<img src="man/figures/new-bits-2.png" width="768" />
 
 ``` r
 
@@ -187,7 +187,7 @@ xdf %>%
   )
 ```
 
-<img src="README_files/figure-commonmark/new-bits-3.png" width="768" />
+<img src="man/figures/new-bits-3.png" width="768" />
 
 ### Geoms!
 
@@ -227,7 +227,7 @@ ggplot(
   theme_enhance_waffle()
 ```
 
-<img src="README_files/figure-commonmark/geoms-1.png" width="576" />
+<img src="man/figures/geoms-1.png" width="576" />
 
 ### Waffle Bar Charts with scales!
 
@@ -278,7 +278,7 @@ ggplot(
   )
 ```
 
-<img src="README_files/figure-commonmark/waffle-bars-1.png"
+<img src="man/figures/waffle-bars-1.png"
 width="672" />
 
 ### Basic example
@@ -288,7 +288,7 @@ parts <- c(80, 30, 20, 10)
 waffle(parts, rows = 8)
 ```
 
-<img src="README_files/figure-commonmark/fig0-1.png" width="576" />
+<img src="man/figures/fig0-1.png" width="576" />
 
 ### Use a data frame
 
@@ -301,7 +301,7 @@ parts <- data.frame(
 waffle(parts, rows = 8)
 ```
 
-<img src="README_files/figure-commonmark/fig1-1.png" width="576" />
+<img src="man/figures/fig1-1.png" width="576" />
 
 ### Slightly more complex example
 
@@ -325,7 +325,7 @@ waffle(
 
 **Health records breaches as fraction of US Population**
 
-<img src="README_files/figure-commonmark/fig2-1.png" width="576" />
+<img src="man/figures/fig2-1.png" width="576" />
 
 <span style="font-size:8pt">One square == 1m ppl</span>
 
@@ -339,7 +339,7 @@ waffle(
 
 **Health records breaches as fraction of US Population**
 
-<img src="README_files/figure-commonmark/fig3-1.png" width="576" />
+<img src="man/figures/fig3-1.png" width="576" />
 
 <span style="font-size:8pt">(One square == 10m ppl)</span>
 
@@ -358,7 +358,7 @@ waffle(
   )
 ```
 
-<img src="README_files/figure-commonmark/medkit-1.png" width="576" />
+<img src="man/figures/medkit-1.png" width="576" />
 
 ### Replicating an old favourite
 
@@ -387,7 +387,7 @@ waffle(
 
 **Average Household Savings Each Year**
 
-<img src="README_files/figure-commonmark/fig4a-1.png" width="768" />
+<img src="man/figures/fig4a-1.png" width="768" />
 
 <span style="font-size:8pt">(1 square == \$392)</span>
 
@@ -425,7 +425,7 @@ iron(
 )
 ```
 
-<img src="README_files/figure-commonmark/fct-1.png" width="576" />
+<img src="man/figures/fct-1.png" width="576" />
 
 Without (you can disable this via `keep` parameter now):
 
@@ -444,11 +444,11 @@ iron(
 )
 ```
 
-<img src="README_files/figure-commonmark/no_fct-1.png" width="576" />
+<img src="man/figures/no_fct-1.png" width="576" />
 
 **Professional Workforce Makeup**
 
-<img src="README_files/figure-commonmark/f5-1.png" width="384" />
+<img src="man/figures/f5-1.png" width="384" />
 
 Iron example (left-align & padding for multiple plots)
 
@@ -489,7 +489,7 @@ waffle(
 iron(A, B, C)
 ```
 
-<img src="README_files/figure-commonmark/f8-1.png" width="672" />
+<img src="man/figures/f8-1.png" width="672" />
 
 ## Package Code Metrics
 
