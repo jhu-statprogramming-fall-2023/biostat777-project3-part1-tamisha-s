@@ -22,8 +22,8 @@ It uses ggplot2 and returns a ggplot2 object.
 * URL to deployed website: https://jhu-statprogramming-fall-2023.github.io/biostat777-project3-part1-tamisha-s/
 
 What I customized in the `pkgdown` website:
-1. thing 1
-2. thing 2
+1. Changed the theme to the bootswatch theme `Litera`. I also changed the base, heading, and code fonts to the following: `base_font`, `heading_font`, `code_font`
+2. Edited the syntax highlighting to the theme `monokai`
 3. thing 3
 4. thing 4
 5. thing 5
