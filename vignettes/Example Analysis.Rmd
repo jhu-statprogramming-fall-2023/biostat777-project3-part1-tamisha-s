@@ -84,39 +84,51 @@ Here's a link to the data dictionary: [Data Dictionary](https://github.com/rford
 
 ### Aims for this example data analysis
 
-With this data analysis, I want to explore the distribution trends for the Blue Jay (Go Hop!) and answer the question, ...?
+With this data analysis, I want to explore the distribution trends for the top 5 birds in the Northeast Region for the 2021-22 season, including the Blue Jay (Go Hop!), and answer the question, ...?
 
-Species code for the Blue Jay: `blujay`
+-   Species code for #1, Carolina/Black-capped Chickadee: `bkcchi`
+
+-   Species code for #2, Dark-eyed Junco: `daejun`
+
+-   Species code for #3, Downy Woodpecker: `dowwoo`
+
+-   Species code for #4, Northern Cardinal: `norcar`
+
+-   Species code for #5, Blue Jay: `blujay`
 
 ## Data wrangling
 
 ```{r dataset for bluejays from feederwatch and site data}
-blue_jays <- as_tibble(feederwatch) %>%
+top_5 <- as_tibble(feederwatch) %>%
   group_by("species_code") %>%
   mutate_at("species_code", as.factor) %>%
-  filter(species_code == 'blujay') %>%
+  filter(species_code %in% c('bkcchi', 'daejun', 'dowwoo', 'norcar', 'blujay')) %>%
   mutate_at("Year", as.factor)
 ```
 
 ## Data visualization
 
-### Looking at number of blue jays per year
+### Looking at total number of top 5 per year
 
 ```{r}
-blue_jays_plot <- blue_jays %>%
+top_5_plot <- top_5 %>%
   group_by(Year) %>%
   summarise(total = n()) %>%
   ggplot(aes(Year, total)) +
   geom_bar(stat = "identity") +
   labs(
-    title = "Visualizing number of blue jays spotted per year",
-    subtitle = "Focusing on 2020 and 2021",
+    title = "Visualizing number of top 5 spotted per year",
+    subtitle = "Focusing on the Northeast Region in 2020 and 2021",
     x = "Year",
-    y = "Number of blue jays spotted"
+    y = "Number of birds spotted"
   )
   
-blue_jays_plot
+top_5_plot
 ```
+
+### Faceted waffle bar chart
+
+-   plot by date
 
 ## Functions used
 
@@ -141,5 +153,7 @@ blue_jays_plot
 -   `ggplot2`
 
     -   `geom_bar()`
+
+    -   `geom_waffle()`
 
 -   `waffle`
