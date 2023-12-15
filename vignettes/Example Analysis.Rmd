@@ -14,6 +14,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
+knitr::include_graphics
 ```
 
 This vignette demonstrates some functions in this package using a dataset from [Tidy Tuesday](https://www.tidytuesday.com/), specifically the [Project FeederWatch](https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-01-10/readme.md) dataset.
@@ -110,11 +112,11 @@ top_5 <- as_tibble(feederwatch) %>%
 
 ### Looking at total number of top 5 per year
 
-```{r}
+```{r top 5 total plot}
 top_5_plot <- top_5 %>%
-  group_by(Year) %>%
+  group_by(Year, species_code) %>%
   summarise(total = n()) %>%
-  ggplot(aes(Year, total)) +
+  ggplot(aes(Year, total, fill = species_code)) +
   geom_bar(stat = "identity") +
   labs(
     title = "Visualizing number of top 5 spotted per year",
@@ -128,7 +130,19 @@ top_5_plot
 
 ### Faceted waffle bar chart
 
--   plot by date
+```{r}
+top_5 %>%
+  group_by(Year, species_code) %>%
+  summarise(total = n()) %>%
+  ggplot(aes(Year, total, fill = species_code)) +
+  geom_bar(stat = "identity") +
+  labs(
+    title = "Visualizing number of top 5 spotted per year",
+    subtitle = "Focusing on the Northeast Region in 2020 and 2021",
+    x = "Year",
+    y = "Number of birds spotted"
+  )
+```
 
 ## Functions used
 
